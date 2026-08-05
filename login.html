@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ingresar — Panel de administrador</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+<section class="admin-login">
+  <div class="admin-login__card">
+    <img src="img/logo.png" alt="Esther's Home" class="brand__logo" style="margin-bottom:16px;">
+    <h1>Panel de administrador</h1>
+    <p class="admin-login__hint">Acceso solo para el dueño del departamento.</p>
+    <form id="loginForm">
+      <label>Correo <input type="email" id="adminEmail" required autocomplete="username"></label>
+      <label>Contraseña <input type="password" id="adminPassword" required autocomplete="current-password"></label>
+      <button type="submit" class="btn btn--primary">Ingresar</button>
+      <p id="loginError" class="admin-login__error" hidden></p>
+    </form>
+  </div>
+</section>
+
+<script type="module" src="js/firebase-config.js"></script>
+<script src="js/login.js"></script>
+</body>
+</html>

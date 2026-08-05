@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Panel de administrador — Depa Marea</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0..1,0&display=block">
+
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/admin.css">
+</head>
+<body class="admin-body">
+
+<!-- ===== DASHBOARD ===== -->
+<div id="dashboard" hidden>
+
+  <header class="admin-header">
+    <div class="brand">
+      <img src="img/logo.png" alt="" class="brand__logo">
+      <span class="brand__text">Esther's <span>Home</span></span>
+    </div>
+    <button id="logoutBtn" class="btn btn--outline">
+      <span class="material-symbols-outlined" style="vertical-align:middle;font-size:18px;">logout</span>
+      Cerrar sesión
+    </button>
+  </header>
+
+  <main class="admin-main">
+
+    <!-- Resumen -->
+    <section class="admin-card">
+      <h2>Resumen</h2>
+
+      <div class="admin-mes-selector">
+        <button id="mesAnterior" type="button" class="btn btn--outline btn--small" aria-label="Mes anterior">
+          <span class="material-symbols-outlined" style="vertical-align:middle;font-size:18px;">chevron_left</span>
+        </button>
+        <span id="mesLabel" class="admin-mes-label"></span>
+        <button id="mesSiguiente" type="button" class="btn btn--outline btn--small" aria-label="Mes siguiente">
+          <span class="material-symbols-outlined" style="vertical-align:middle;font-size:18px;">chevron_right</span>
+        </button>
+      </div>
+
+      <div class="admin-stats">
+        <div class="admin-stat">
+          <span class="admin-stat__num" id="statPendientes">0</span>
+          <span class="admin-stat__label">Pendientes</span>
+        </div>
+        <div class="admin-stat">
+          <span class="admin-stat__num" id="statSemana">0</span>
+          <span class="admin-stat__label">Esta semana</span>
+        </div>
+        <div class="admin-stat">
+          <span class="admin-stat__num" id="statMes">0</span>
+          <span class="admin-stat__label" id="statMesLabel">Este mes</span>
+        </div>
+        <div class="admin-stat">
+          <span class="admin-stat__num" id="statTotal">0</span>
+          <span class="admin-stat__label">Total histórico</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reservas pendientes -->
+    <section class="admin-card">
+      <h2>Reservas pendientes</h2>
+      <div id="listaPendientes" class="admin-table"></div>
+    </section>
+
+    <!-- Historial -->
+    <section class="admin-card">
+      <h2>Historial de reservas</h2>
+      <div id="listaHistorial" class="admin-table"></div>
+    </section>
+
+    <!-- Precios -->
+    <section class="admin-card">
+      <h2>Editar tarifas</h2>
+      <form id="preciosForm" class="admin-form-inline">
+        <label>Precio por hora (S/) <input type="number" id="inputPrecioHora" min="0" required></label>
+        <label>Precio por día (S/) <input type="number" id="inputPrecioDia" min="0" required></label>
+        <button type="submit" class="btn btn--primary">Guardar tarifas</button>
+      </form>
+      <p id="preciosGuardado" class="admin-hint-ok" hidden>Tarifas actualizadas ✓</p>
+    </section>
+
+    <!-- Reseñas -->
+    <section class="admin-card">
+      <h2>Moderar reseñas</h2>
+      <div id="listaResenasAdmin" class="admin-table"></div>
+    </section>
+
+  </main>
+</div>
+
+<script type="module" src="js/firebase-config.js"></script>
+<script src="js/admin.js"></script>
+</body>
+</html>

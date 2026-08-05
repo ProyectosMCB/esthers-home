@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Esther's Home — Departamento por horas cerca del mar</title>
+<meta name="description" content="Departamento por horas a 10 minutos de la playa. Reserva tu escapada en minutos.">
+
+<!-- Fuentes -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Work+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+
+<!-- Google Material Symbols (iconos: menú, cerrar, WhatsApp, estrella) -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,400,0..1,0&display=block">
+
+<!-- FullCalendar (calendario interactivo) -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.11/index.global.min.css" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.11/index.global.min.js"></script>
+
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ===== MENÚ ===== -->
+<header class="topbar">
+  <div class="topbar__inner">
+    <a href="#inicio" class="brand">
+      <img src="img/logo.png" alt="" class="brand__logo">
+      <span class="brand__text">Esther's <span>Home</span></span>
+    </a>
+  </div>
+</header>
+
+<button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="menu" aria-label="Abrir menú">
+  <span class="material-symbols-outlined" id="menuIcon">menu</span>
+</button>
+<nav id="menu" class="menu">
+  <a href="#galeria">Galería</a>
+  <a href="#precios">Precios</a>
+  <a href="#reservar">Reservar</a>
+  <a href="#resenas">Reseñas</a>
+  <a href="#ubicacion">Ubicación</a>
+  <a id="menuMisReservas" href="#" hidden>Mis reservas</a>
+  <div id="menuCuenta" class="menu__cuenta" hidden>
+    <span id="menuNombreUsuario" class="menu__nombre"></span>
+    <button id="menuCerrarSesion" type="button" class="menu__cerrar-sesion">Cerrar sesión</button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="inicio" class="hero">
+  <div class="hero__content">
+    <p class="eyebrow">A 10 minutos del mar · Reserva por horas</p>
+    <h1>Tu escapada, a solo 10 minutos del mar.</h1>
+    <p class="hero__lead">Un departamento privado y cómodo, cerca de todo, listo cuando tú lo necesites. Reserva tu horario en minutos.</p>
+    <a href="#reservar" class="btn btn--primary">Ver disponibilidad</a>
+  </div>
+  <div class="hero__wave" aria-hidden="true"></div>
+</section>
+
+<!-- ===== GALERÍA ===== -->
+<section id="galeria" class="section">
+  <p class="section__eyebrow">01 — El espacio</p>
+  <h2>Cada rincón, listo para ti</h2>
+  <div class="gallery">
+    <!-- Reemplaza cada archivo en img/ con tus fotos reales, mismo nombre -->
+    <div class="gallery__item gallery__item--big"><img src="img/sala-1.jpg" alt="Sala del departamento"></div>
+    <div class="gallery__item"><img src="img/sala-2.jpg" alt="Sala del departamento"></div>
+    <div class="gallery__item"><img src="img/cama-1.jpg" alt="Dormitorio"></div>
+    <div class="gallery__item"><img src="img/cocina-1.jpg" alt="Cocina"></div>
+    <div class="gallery__item"><img src="img/sala-3.jpg" alt="Sala del departamento"></div>
+    <div class="gallery__item"><img src="img/cama-2.jpg" alt="Dormitorio"></div>
+    <div class="gallery__item"><img src="img/cocina-2.jpg" alt="Cocina"></div>
+    <div class="gallery__item"><img src="img/sala-4.jpg" alt="Sala del departamento"></div>
+    <div class="gallery__item"><img src="img/cama-3.jpg" alt="Dormitorio"></div>
+    <div class="gallery__item"><img src="img/bano-1.jpg" alt="Baño"></div>
+    <div class="gallery__item"><img src="img/bano-2.jpg" alt="Baño"></div>
+  </div>
+</section>
+
+<!-- ===== PRECIOS (estilo boarding pass) ===== -->
+<section id="precios" class="section section--sand">
+  <p class="section__eyebrow">02 — Tarifas</p>
+  <h2>Precio claro, sin sorpresas</h2>
+  <div class="tickets-row">
+    <div class="ticket">
+      <div class="ticket__main">
+        <span class="ticket__label">Tarifa por hora</span>
+        <span class="ticket__price">S/ <span id="precioHora">--</span></span>
+        <span class="ticket__note">Ideal para estadías cortas</span>
+      </div>
+      <div class="ticket__stub">
+        <span class="ticket__label">Incluye</span>
+        <ul>
+          <li>Wifi</li>
+          <li>Aire acondicionado</li>
+          <li>Ropa de cama</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="ticket">
+      <div class="ticket__main">
+        <span class="ticket__label">Tarifa por día</span>
+        <span class="ticket__price">S/ <span id="precioDia">--</span></span>
+        <span class="ticket__note">Ideal para quedarte toda la jornada</span>
+      </div>
+      <div class="ticket__stub">
+        <span class="ticket__label">Incluye</span>
+        <ul>
+          <li>Wifi</li>
+          <li>Aire acondicionado</li>
+          <li>Ropa de cama</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CALENDARIO / RESERVA ===== -->
+<section id="reservar" class="section">
+  <p class="section__eyebrow">03 — Disponibilidad</p>
+  <h2>Elige tu día y hora</h2>
+
+  <div id="authBox" class="auth-box">
+    <p>Inicia sesión con Google para reservar.</p>
+    <button id="googleLoginBtn" class="btn btn--outline">Continuar con Google</button>
+  </div>
+
+  <div id="calendarWrap" class="calendar-wrap" hidden>
+    <div id="calendar"></div>
+  </div>
+
+  <div id="reservaModalOverlay" class="modal-overlay">
+    <div class="modal-card">
+      <button type="button" class="modal-close" id="closeReservaModal" aria-label="Cerrar">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <h3>Confirma tu reserva</h3>
+      <p id="resumenReserva" class="reserva-resumen"></p>
+      <form id="reservaForm" class="reserva-form">
+        <label>Nombre completo <input type="text" id="nombreCompleto" required></label>
+        <label>Celular <input type="tel" id="celular" required placeholder="Para coordinar por WhatsApp"></label>
+        <input type="hidden" id="fechaSeleccionada">
+        <input type="hidden" id="horaInicioSeleccionada">
+        <input type="hidden" id="horaFinSeleccionada">
+        <button type="submit" class="btn btn--primary">Confirmar y continuar por WhatsApp</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== RESEÑAS ===== -->
+<section id="resenas" class="section section--sand">
+  <p class="section__eyebrow">04 — Huéspedes</p>
+  <h2>Lo que dicen quienes ya vinieron</h2>
+
+  <div id="listaResenas" class="reviews">
+    <!-- Las tarjetas se generan dinámicamente desde Firestore -->
+    <p class="reviews__empty">Aún no hay reseñas. ¡Sé el primero!</p>
+  </div>
+
+  <button id="verMasResenas" class="btn btn--outline" hidden>Ver más reseñas</button>
+
+  <button id="dejarResenaBtn" class="btn btn--primary" style="margin-top:24px;">Dejar una reseña</button>
+
+  <div id="resenaModalOverlay" class="modal-overlay">
+    <div class="modal-card">
+      <button type="button" class="modal-close" id="closeResenaModal" aria-label="Cerrar">
+        <span class="material-symbols-outlined">close</span>
+      </button>
+      <form id="resenaForm" class="review-form">
+        <h3>Cuéntanos tu experiencia</h3>
+        <div class="star-picker" id="starPicker" role="radiogroup" aria-label="Calificación">
+          <button type="button" class="star" data-value="1" aria-label="1 estrella"><span class="material-symbols-outlined">star</span></button>
+          <button type="button" class="star" data-value="2" aria-label="2 estrellas"><span class="material-symbols-outlined">star</span></button>
+          <button type="button" class="star" data-value="3" aria-label="3 estrellas"><span class="material-symbols-outlined">star</span></button>
+          <button type="button" class="star" data-value="4" aria-label="4 estrellas"><span class="material-symbols-outlined">star</span></button>
+          <button type="button" class="star" data-value="5" aria-label="5 estrellas"><span class="material-symbols-outlined">star</span></button>
+        </div>
+        <input type="hidden" id="calificacionSeleccionada" value="0">
+        <textarea id="comentarioResena" placeholder="¿Cómo fue tu estadía?" required></textarea>
+        <button type="submit" class="btn btn--primary">Publicar reseña</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ===== UBICACIÓN ===== -->
+<section id="ubicacion" class="section">
+  <p class="section__eyebrow">05 — Cómo llegar</p>
+  <h2>A 10 minutos del mar</h2>
+  <p class="hero__lead" style="margin-top:-8px;">Bien ubicado, cerca de todo lo que necesitas para tu estadía.</p>
+  <div class="map-wrap">
+    <iframe src="https://www.google.com/maps?q=-4.1790347,-81.1275124&z=15&output=embed" loading="lazy" title="Ubicación del departamento"></iframe>
+  </div>
+  <a href="https://maps.app.goo.gl/hsxuNxCG1JuZsKDZ7?g_st=aw" target="_blank" rel="noopener" class="btn btn--primary" style="margin-top:20px;">
+    Abrir en Google Maps
+  </a>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <p>Esther's Home — Departamento por horas, a 10 minutos del mar</p>
+</footer>
+
+<!-- Botón flotante de WhatsApp -->
+<a id="whatsappFloat" class="whatsapp-float" target="_blank" rel="noopener" aria-label="Escribir por WhatsApp">
+  <svg viewBox="0 0 32 32" width="24" height="24" fill="currentColor" aria-hidden="true">
+    <path d="M16.004 3C9.376 3 4 8.373 4 15c0 2.31.66 4.47 1.8 6.3L4 29l7.9-1.75A11.9 11.9 0 0 0 16.004 27C22.63 27 28 21.63 28 15S22.63 3 16.004 3Zm0 21.9a9.86 9.86 0 0 1-5.03-1.38l-.36-.21-4.69 1.04 1.03-4.58-.24-.37A9.86 9.86 0 1 1 25.86 15c0 5.46-4.44 9.9-9.856 9.9Zm5.4-7.4c-.296-.148-1.75-.864-2.02-.963-.27-.099-.468-.148-.665.148-.198.296-.76.963-.933 1.16-.172.198-.344.223-.64.075-.296-.148-1.25-.46-2.38-1.47-.88-.786-1.474-1.756-1.646-2.052-.172-.296-.018-.456.13-.604.134-.133.296-.346.444-.519.148-.173.198-.297.296-.494.099-.198.05-.371-.025-.519-.074-.148-.665-1.6-.912-2.19-.24-.577-.484-.499-.665-.508l-.567-.01c-.198 0-.518.074-.79.37-.27.297-1.03 1.007-1.03 2.457 0 1.45 1.055 2.85 1.203 3.048.148.198 2.077 3.17 5.032 4.446.703.303 1.252.484 1.68.62.706.225 1.348.193 1.856.117.566-.085 1.75-.716 1.997-1.407.247-.692.247-1.284.173-1.408-.074-.123-.272-.198-.567-.346Z"/>
+  </svg>
+  <span class="whatsapp-float__text">WhatsApp</span>
+</a>
+
+<!-- Modal: mis reservas -->
+<div id="misReservasModalOverlay" class="modal-overlay">
+  <div class="modal-card">
+    <button type="button" class="modal-close" id="closeMisReservasModal" aria-label="Cerrar">
+      <span class="material-symbols-outlined">close</span>
+    </button>
+    <h3>Mis reservas</h3>
+    <div id="listaMisReservas" class="admin-table"></div>
+  </div>
+</div>
+
+<!-- Lightbox: ver foto de la galería en grande -->
+<div id="lightboxOverlay" class="lightbox-overlay">
+  <button type="button" class="lightbox-close" id="closeLightbox" aria-label="Cerrar">
+    <span class="material-symbols-outlined">close</span>
+  </button>
+  <img id="lightboxImg" src="" alt="">
+</div>
+
+<script type="module" src="js/firebase-config.js"></script>
+<script src="js/script.js"></script>
+</body>
+</html>
